@@ -47,7 +47,7 @@ function LoginScreen() {
                     </Form.Item>
 
                     <Form.Item>
-                        <Button type="primary" htmlType="submit" style={{ height: 50, width: "100%" }}>
+                        <Button type="primary" htmlType="submit" style={style.button}>
                             Log in
                         </Button>
                     </Form.Item>
@@ -63,6 +63,10 @@ const style = {
         display: "flex",
         justifyContent: "center",
         alignItems: "center"
+    },
+    button: { 
+        height: 50, 
+        width: "100%" 
     },
 }
 
