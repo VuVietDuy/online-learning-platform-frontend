@@ -1,22 +1,39 @@
-import React from 'react'
-import { Button, Card, Divider, Dropdown, Typography } from 'antd'
+import React, { useState } from 'react'
+import { Button, Card, Divider, Dropdown, Input, Modal, Typography } from 'antd'
+import { UploadOutlined } from '@ant-design/icons';
 
 import { asignment } from '../data'
-import { UploadOutlined } from '@ant-design/icons';
 
 const { Paragraph, Title } = Typography;
 
 const AsignmentDetailPage = () => {
 
-  const onClick = (e) => {
-    console.log('e')
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [links, setLinks] = useState("");
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+    console.log(links)
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const sentToTeacher = () => {
+    console.log("sent ", links);
   }
 
   const items = [
     {
       key: '1',
       label: (
-        <div onClick={onClick}>
+        <div onClick={showModal}>
           Links
         </div>
       ),
@@ -24,17 +41,20 @@ const AsignmentDetailPage = () => {
     {
       key: '2',
       label: (
-        <div onClick={onClick}>
+        <div onClick={showModal}>
           File
         </div>
       ),
     },
   ];
 
-  console.log(asignment.desription)
-
   return (
     <div style={style.container}>
+      <>
+        <Modal title="Links" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+          <Input style={style.input} onChange={(event) => setLinks(event.target.value)}></Input>
+        </Modal>
+      </>
       <div>
         <Title level={2}>{asignment.title}</Title>
         <Divider />
@@ -55,7 +75,9 @@ const AsignmentDetailPage = () => {
           </Dropdown>
           <Button
             type='primary'
-            style={style.button_submit}>Submit</Button>
+            style={style.button_submit}
+            onClick={sentToTeacher}
+            >Submit</Button>
         </Card>
       </div>
     </div>
@@ -63,6 +85,9 @@ const AsignmentDetailPage = () => {
 }
 
 const style = {
+  input: {
+    height: 50,
+  },
   container: {
     maxWidth: 1000,
     display: 'flex',

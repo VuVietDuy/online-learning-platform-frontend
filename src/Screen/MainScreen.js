@@ -91,7 +91,7 @@ function MainScreen() {
                 <Route path="/calander" element={<CalendarPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/s" element={<SettingPage />} />
-                <Route path="/:id*" element={<CourseDetailPage />} />
+                <Route path="/:id/*" element={<CourseDetailPage />} />
               </Routes>
             </Content>
           </Layout>

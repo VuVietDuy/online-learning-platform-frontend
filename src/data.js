@@ -16,16 +16,6 @@ const courses = [
 const courseInformation = {
     id: 1,
     name: "python for ai",
-    notes: [
-        {
-            id: 1,
-            title: "python for beginer"
-        },
-        {
-            id: 1,
-            title: "python for beginer"
-        }
-    ]
 }
 
 const asignments = [
@@ -50,9 +40,41 @@ const asignment = {
     Design, a design language for background applications, is refined by Ant UED Team.`,
 }
 
+const notes = [
+    {
+        id: 1,
+        title: "lesion 1",
+    },
+    {
+        id: 2,
+        title: "lesion 2",
+    },
+    {
+        id: 3,
+        title: "lesion 3",
+    },
+    {
+        id: 4,
+        title: "lesion 4",
+    }
+]
+
+const noteData = {
+    id: 1,
+    title: "lesion 1",
+    content: `Ant Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team. Ant
+    Design, a design language for background applications, is refined by Ant UED Team.`,
+}
+
 export {
     courses,
     courseInformation,
     asignments,
-    asignment
+    asignment,
+    notes,
+    noteData,
 }

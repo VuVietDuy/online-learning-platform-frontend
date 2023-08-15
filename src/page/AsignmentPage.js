@@ -12,7 +12,7 @@ function AsignmentPage() {
     <div>
       {asignments.map(asignment => {
         return (
-          <NavLink to={`/${id}/asignment/${asignment.id}/detail`}>
+          <NavLink to={`/${id}/asignment/${asignment.id}/detail`} key={asignment.id}>
             <Asignment title={asignment.title}></Asignment>
           </NavLink>
         )

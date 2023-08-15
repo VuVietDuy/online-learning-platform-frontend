@@ -1,10 +1,10 @@
 import React from 'react'
-import EditorComponent from '../component/EditorComponent'
+import Editor from '../component/Editor'
 
 const EditorPage = () => {
   return (
     <div>
-        <EditorComponent></EditorComponent>
+        <Editor></Editor>
     </div>
   )
 }

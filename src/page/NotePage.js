@@ -3,7 +3,7 @@ import { NavLink, useParams } from 'react-router-dom'
 
 import NewNote from '../component/NewNote'
 import Note from '../component/Note'
-import { courseInformation } from '../data'
+import { notes } from '../data'
 
 function NotePage() {
 
@@ -11,10 +11,12 @@ function NotePage() {
 
   return (
     <div>
-      <NavLink to={`/${id}/editor`}><NewNote ></NewNote></NavLink>
-      {courseInformation.notes.map(note => {
+      <NavLink to={`/${id}/editor/new`}><NewNote ></NewNote></NavLink>
+      {notes.map((note, i) => {
         return (
-          <Note title={note.title}></Note>
+          <NavLink to={`/${id}/editor/${note.id}`} key={i}>
+            <Note title={note.title} key={note.id}></Note>
+          </NavLink>
         )
       })}
     </div>

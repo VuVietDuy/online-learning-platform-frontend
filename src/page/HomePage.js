@@ -12,7 +12,6 @@ const HomePage = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-  var i = 1;
 
   return (
     <div style={{
@@ -30,7 +29,7 @@ const HomePage = () => {
         <Row gutter={[24, 16]}>
           {
             courses.map(course => {
-              return <Col span={5} key={i}>
+              return <Col span={5} key={course.id}>
                 <NavLink to={`/${course.id}`}>
                   <Course title={course.name} ></Course>
                 </NavLink>

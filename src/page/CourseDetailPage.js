@@ -4,9 +4,9 @@ import { Layout, Menu } from 'antd'
 
 import NotePage from './NotePage';
 import AsignmentPage from './AsignmentPage';
-import EditorPage from './EditorPage';
 import AsignmentDetailPage from './AsignmentDetailPage';
 import Document from '../component/Document';
+import Editor from '../component/Editor';
 
 const { Header } = Layout;
 
@@ -14,7 +14,6 @@ function CourseDetailPage() {
 
     //get id from url
     const { id } = useParams("id")
-    console.log("pa", id)
 
     return (
         <div>
@@ -32,7 +31,7 @@ function CourseDetailPage() {
             <div style={style.content}>
                 <Routes>
                     <Route path={`/`} element={<NotePage></NotePage>}></Route>
-                    <Route path={`/editor`} element={<EditorPage></EditorPage>}></Route>
+                    <Route path={`/editor/:noteId`} element={<Editor></Editor>}></Route>
                     <Route path={`/asignment`} element={<AsignmentPage></AsignmentPage>}></Route>
                     <Route path={`/document`} element={<Document></Document>}></Route>
                     <Route path={`/asignment/:asignmentId/detail`} element={<AsignmentDetailPage></AsignmentDetailPage>}></Route>
