@@ -4,11 +4,11 @@ import { CalendarOutlined, HomeOutlined, MenuFoldOutlined, MenuUnfoldOutlined, R
 import { Button, Layout, Menu } from 'antd';
 import SubMenu from 'antd/es/menu/SubMenu';
 
-import HomePage from './HomePage';
-import CourseDetailPage from './CourseDetailPage';
-import CalendarPage from './CalendarPage';
-import SettingPage from './SettingPage';
-import ProfilePage from './ProfilePage';
+import HomePage from '../page/HomePage';
+import CourseDetailPage from '../page/CourseDetailPage';
+import CalendarPage from '../page/CalendarPage';
+import SettingPage from '../page/SettingPage';
+import ProfilePage from '../page/ProfilePage';
 import BreadcrumbHierarchy from '../component/BreadcrumbHierarchy';
 import DropdownComponent from '../component/DropdownComponent';
 import { courses } from '../data';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route} from 'react-router-dom';
-import MainScreen from './page/MainScreen';
-import LoginScreen from './page/LoginScreen';
+import MainScreen from './screen/MainScreen';
+import LoginScreen from './screen/LoginScreen';
 
 const App = () => {
 
