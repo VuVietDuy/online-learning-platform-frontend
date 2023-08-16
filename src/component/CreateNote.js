@@ -10,7 +10,7 @@ const CreateNote = (props) => {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
 
-  const {id} = useParams("id")
+  const {id} = useParams()
 
   //get note by note id
 
@@ -18,7 +18,13 @@ const CreateNote = (props) => {
   var defaultContent = ""
 
   const handleTitleBlur = async (e) => {
-    console.log(e.target.value);
+    try {
+        if (title || note) {
+          await createNote(title, note, id);
+        }
+      } catch (error) {
+        console.error('Error creating note:', error);
+      }
   }
 
   const handleNoteBlur = async () => {

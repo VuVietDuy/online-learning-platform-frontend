@@ -1,6 +1,7 @@
 import React from 'react';
 import { EditOutlined, EllipsisOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Avatar, Card } from 'antd';
+
 const { Meta } = Card;
 
 const Course = (props) => {
@@ -8,12 +9,6 @@ const Course = (props) => {
         <Card
           style={{
           }}
-          cover={
-            <img
-            alt="example"
-            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-            />
-          }
           actions={[
             <EditOutlined key="edit" />,
             <EllipsisOutlined key="ellipsis" />,

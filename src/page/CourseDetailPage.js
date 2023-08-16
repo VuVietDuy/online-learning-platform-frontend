@@ -14,8 +14,8 @@ const { Header } = Layout;
 function CourseDetailPage() {
 
     //get id from url
-    const { id } = useParams("id")
-    console.log(id)
+    const { id } = useParams()
+
 
     return (
         <div>

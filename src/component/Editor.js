@@ -1,46 +1,67 @@
-// import React, { useState } from 'react'
-// import TextArea from 'antd/es/input/TextArea';
-// import { Input } from 'antd';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import TextArea from 'antd/es/input/TextArea';
+import { Input } from 'antd';
+import { useParams } from 'react-router-dom';
 
-// const Editor = (props) => {
+import { getNoteById, updateNote } from '../service/NoteService';
 
-//   const [title, setTitle] = useState("");
-//   const [note, setNote] = useState("");
-//   const { id } = useParams("id");
+const Editor = () => {
+  const [note, setNote] = useState({ title: '', content: '' });
+  const { noteId } = useParams();
 
-//   // get note by note id
+  useEffect(() => {
+    const fetchNoteById = async () => {
+      const noteData = await getNoteById(noteId);
+      if (noteData) {
+        setNote({
+          title: noteData.title || '',
+          content: noteData.content || '',
+        });
+      }
+    };
 
-//   var defaultTitle = ""
-//   var defaultContent = ""
+    fetchNoteById();
+  }, [noteId]);
 
-//   const handleTitleBlur = (e) => {
-//     console.log(e.target.value);
-//   }
+  const handleTitleBlur = (e) => {
+    const newTitle = e.target.value;
+    updateNote(noteId, newTitle, note.content);
+  };
 
-//   const handleNoteBlur = (e) => {
-//     console.log(e.target.value);
-//   }
+  const handleNoteBlur = (e) => {
+    const newContent = e.target.value;
+    updateNote(noteId, note.title, newContent);
+  };
 
-//   return (
-//     <div style={style.container} onBlur={handleTitleBlur}>
-//       <Input placeholder='Untitle' onChange={(event) => setTitle(event.target.value)} style={style.input} defaultValue={defaultTitle}></Input>
-//       <TextArea style={style.text_area} onChange={(event) => setNote(event.target.value)} onBlur={handleNoteBlur} defaultValue={defaultContent} />
-//     </div>
-//   )
-// }
+  return (
+    <div style={style.container} onBlur={handleTitleBlur}>
+      <Input
+        placeholder="Untitled"
+        onChange={(event) => setNote({ ...note, title: event.target.value })}
+        style={style.input}
+        value={note.title}
+      />
+      <TextArea
+        style={style.text_area}
+        onChange={(event) => setNote({ ...note, content: event.target.value })}
+        onBlur={handleNoteBlur}
+        value={note.content}
+      />
+    </div>
+  );
+};
 
-// const style = {
-//   container: {
-//     width: 1000,
-//   },
-//   input: {
-//     height: 50,
-//     marginBottom: 24,
-//   },
-//   text_area: {
-//     height: "70vh",
-//   },
-// }
+const style = {
+  container: {
+    width: 1000,
+  },
+  input: {
+    height: 50,
+    marginBottom: 24,
+  },
+  text_area: {
+    height: '70vh',
+  },
+};
 
-// export default Editor
+export default Editor;

@@ -9,9 +9,9 @@ import CourseDetailPage from '../page/CourseDetailPage';
 import CalendarPage from '../page/CalendarPage';
 import SettingPage from '../page/SettingPage';
 import ProfilePage from '../page/ProfilePage';
+import CreateCoursePage from '../page/CreateCoursePage';
 import BreadcrumbHierarchy from '../component/BreadcrumbHierarchy';
 import DropdownComponent from '../component/DropdownComponent';
-import CreateCoursePage from '../page/CreateCoursePage';
 import { getCourses } from '../service/CourseService';
 
 const { Header, Content, Sider } = Layout;
