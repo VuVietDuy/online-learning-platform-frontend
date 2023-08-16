@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Layout, Row, Col, theme } from 'antd';
 
 import Course from '../component/Course'
-import { courses } from '../data';
+import {getCourses} from '../service/CourseService';
 
 const { Content } = Layout;
 
 const HomePage = () => {
+
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const coursesData = await getCourses();
+      setCourses(coursesData);
+    };
+
+    fetchCourses();
+  }, [])
 
   const {
     token: { colorBgContainer },

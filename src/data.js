@@ -59,6 +59,7 @@ const notes = [
     }
 ]
 
+
 const noteData = {
     id: 1,
     title: "lesion 1",

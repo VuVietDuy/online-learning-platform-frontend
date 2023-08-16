@@ -1,24 +1,24 @@
-import axios from "axios";
 
-const COURSE_API_BASE_URL = "http://localhost:8080/api/v1/courses";
+import { addDoc, collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/FirebaseConfig';
 
-function getCourses() {
-    return axios.get(COURSE_API_BASE_URL)
-      .then(resp => {
-        const data = resp.data;
-        if (Array.isArray(data)) {
-          return data;
-        } else {
-          throw new Error('Response data is not an array');
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching courses:', error);
-        throw error;
-      });
-  }
+const coursesCollectionRef = collection(db, "courses");
 
+const getCourses = async () => {
+  const data = await getDocs(coursesCollectionRef);
+  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+};
 
-export {
-    getCourses
-}
+const createCourse = async (name, description) => {
+  const date = new Date();
+  await addDoc(coursesCollectionRef, {
+    name: name,
+    description: description,
+    created_at: date.getTime(),
+  });
+};
+
+export  {
+  getCourses,
+  createCourse,
+};

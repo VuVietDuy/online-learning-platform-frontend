@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Link, Route, Routes } from 'react-router-dom';
 import { CalendarOutlined, HomeOutlined, MenuFoldOutlined, MenuUnfoldOutlined, ReadOutlined, UsergroupAddOutlined } from '@ant-design/icons';
 import { Button, Layout, Menu } from 'antd';
@@ -11,12 +11,24 @@ import SettingPage from '../page/SettingPage';
 import ProfilePage from '../page/ProfilePage';
 import BreadcrumbHierarchy from '../component/BreadcrumbHierarchy';
 import DropdownComponent from '../component/DropdownComponent';
-import { courses } from '../data';
+import CreateCoursePage from '../page/CreateCoursePage';
+import { getCourses } from '../service/CourseService';
 
 const { Header, Content, Sider } = Layout;
 
 function MainScreen() {
+
   const [collapsed, setCollapsed] = useState(false);
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      const coursesData = await getCourses();
+      setCourses(coursesData);
+    };
+
+    fetchCourses();
+  }, [])
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -92,6 +104,7 @@ function MainScreen() {
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/s" element={<SettingPage />} />
                 <Route path="/:id/*" element={<CourseDetailPage />} />
+                <Route path="/createCourse" element={<CreateCoursePage />} />
               </Routes>
             </Content>
           </Layout>

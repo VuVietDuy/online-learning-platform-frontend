@@ -1,7 +1,8 @@
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
-import { Avatar, Dropdown } from 'antd';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Dropdown } from 'antd';
+
 import { auth } from '../config/FirebaseConfig';
 
 const DropdownComponent = () => {
@@ -9,7 +10,7 @@ const DropdownComponent = () => {
         {
             key: '1',
             label: (
-                <NavLink to={"/profile"}> <UserOutlined />{auth.currentUser.email}</NavLink>
+                <NavLink to={"/profile"}> <UserOutlined />{auth?.currentUser?.email}</NavLink>
             ),
         },
         {

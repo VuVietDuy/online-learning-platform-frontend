@@ -26,11 +26,6 @@ function LoginScreen() {
         }
     }
 
-    // const onFinish = (values) => {
-    //     console.log('Success:', values);
-    //     navigate("/h")
-    // };
-
     return (
         <div
             style={style.container}
